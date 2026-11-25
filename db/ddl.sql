@@ -172,3 +172,23 @@ CREATE TABLE Character_Pick(
   FOREIGN KEY (character_id) REFERENCES Character(character_id),
   FOREIGN KEY (set_id, game_number) REFERENCES Game_Result(set_id, game_number)
 );
+
+CREATE INDEX idx_tournament_organizer ON Tournament (organizer_id);
+CREATE INDEX idx_tournament_game_date ON Tournament (game_id, start_date);
+CREATE INDEX idx_tournament_status_date ON Tournament (status, start_date);
+CREATE INDEX idx_entrant_tournament ON Entrant (tournament_id);
+CREATE INDEX idx_entrant_account ON Entrant (account_id);
+CREATE INDEX idx_entrant_team ON Entrant (team_id);
+CREATE INDEX idx_team_member_account ON Team_Member (account_id);
+CREATE INDEX idx_team_captain ON Team (captain_id);
+CREATE INDEX idx_invitation_recipient ON Team_Invitation (recipient_account_id, status);
+CREATE INDEX idx_invitation_team ON Team_Invitation (team_id);
+CREATE INDEX idx_set_bracket  ON Bracket_Set (tournament_id, bracket_side, round);
+CREATE INDEX idx_set_entrant1 ON Bracket_Set (entrant1_id);
+CREATE INDEX idx_set_entrant2 ON Bracket_Set (entrant2_id);
+CREATE INDEX idx_set_winner ON Bracket_Set (winner_id);
+CREATE INDEX idx_report_set ON Set_Report (set_id, status);
+CREATE INDEX idx_report_reviewer ON Set_Report (reviewer_id, status);
+CREATE INDEX idx_post_game_status ON Teammate_Post (game_id, status, created_at);
+CREATE INDEX idx_post_account ON Teammate_Post (account_id);
+CREATE INDEX idx_character_game ON Character (game_id);

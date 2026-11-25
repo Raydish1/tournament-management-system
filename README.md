@@ -25,5 +25,6 @@ at this point, we can see schema was written to tournament db via:
 psql -h localhost -p 5432 -U admin -d tournament 
 \c tournament
 \dt
+\di
 ```
 
